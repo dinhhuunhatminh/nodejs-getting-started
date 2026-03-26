@@ -38,3 +38,18 @@ jobs:
         ignore-unfixed: true 
         vuln-type: 'os,library' 
         severity: 'CRITICAL,HIGH'
+
+    - name: 8. Đăng nhập vào kho GitHub Container Registry
+      uses: docker/login-action@v2
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }} # Tự động lấy tên tài khoản GitHub của bạn
+        password: ${{ secrets.GITHUB_TOKEN }} # Dùng chìa khóa mặc định của GitHub
+
+    - name: 9. Gắn thẻ (Tag) và Đẩy Image lên kho
+      run: |
+        # Đổi tên Image cho đúng chuẩn cấu trúc của kho GitHub
+        docker tag my-node-app:latest ghcr.io/${{ github.repository_owner }}/my-node-app:latest
+        
+        # Lệnh đẩy Image từ máy ảo lên kho
+        docker push ghcr.io/${{ github.repository_owner }}/my-node-app:latest
