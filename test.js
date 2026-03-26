@@ -1,4 +1,3 @@
-throw new Error("Trọng tài ơi, phát hiện lỗi giùm tôi nhé!");
 const { spawn } = require('child_process')
 const { request } = require('http')
 
