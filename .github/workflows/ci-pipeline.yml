@@ -24,7 +24,7 @@ jobs:
       run: npm test
 
     - name: 5. Đóng gói ứng dụng thành Docker Image
-      run: docker build -t my-node-app:latest .
+      run: docker build -t my-node-app-v2:latest .
       
     - name: 6. Kiểm tra Image đã được tạo thành công chưa
       run: docker images
@@ -49,7 +49,7 @@ jobs:
     - name: 9. Gắn thẻ (Tag) và Đẩy Image lên kho
       run: |
         # Đổi tên Image cho đúng chuẩn cấu trúc của kho GitHub
-        docker tag my-node-app:latest ghcr.io/${{ github.repository_owner }}/my-node-app:latest
+        docker tag my-node-app-v2:latest ghcr.io/${{ github.repository_owner }}/my-node-app-v2:latest
         
         # Lệnh đẩy Image từ máy ảo lên kho
         docker push ghcr.io/${{ github.repository_owner }}/my-node-app:latest
