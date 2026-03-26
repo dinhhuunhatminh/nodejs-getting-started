@@ -48,8 +48,8 @@ jobs:
 
     - name: 9. Gắn thẻ (Tag) và Đẩy Image lên kho
       run: |
-        # Đổi tên Image cho đúng chuẩn cấu trúc của kho GitHub
-        docker tag my-node-app:latest ghcr.io/${{ github.repository_owner }}/my-node-app:latest
+        # Đổi đuôi my-node-app thành nodejs-getting-started
+        docker tag my-node-app:latest ghcr.io/${{ github.repository_owner }}/nodejs-getting-started:latest
         
         # Lệnh đẩy Image từ máy ảo lên kho
-        docker push ghcr.io/${{ github.repository_owner }}/my-node-app:latest
+        docker push ghcr.io/${{ github.repository_owner }}/nodejs-getting-started:latest
