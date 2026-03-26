@@ -14,7 +14,7 @@ RUN npm install --only=production
 COPY . .
 
 # Mở cổng 5001 để bên ngoài có thể truy cập
-EXPOSE 5001
+EXPOSE 5006
 
 # Lệnh khởi động ứng dụng khi container chạy
 CMD ["npm", "start"]
