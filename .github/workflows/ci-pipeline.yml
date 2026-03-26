@@ -22,3 +22,9 @@ jobs:
 
     - name: 4. Chạy kiểm tra mã nguồn (Test)
       run: npm test
+
+    - name: 5. Đóng gói ứng dụng thành Docker Image
+      run: docker build -t my-node-app:latest .
+      
+    - name: 6. Kiểm tra Image đã được tạo thành công chưa
+      run: docker images
