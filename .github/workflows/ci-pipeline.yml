@@ -4,6 +4,11 @@ on:
   push:
     branches: [ "main" ] # Lắng nghe sự kiện đẩy code lên nhánh main
 
+# THÊM KHỐI NÀY VÀO ĐỂ CẤP QUYỀN ĐẨY (PUSH) IMAGE
+permissions:
+  contents: read
+  packages: write
+
 jobs:
   build-va-kiem-thu:
     runs-on: ubuntu-latest # Cấp phát một máy ảo Ubuntu mới nhất
