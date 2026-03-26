@@ -28,3 +28,13 @@ jobs:
       
     - name: 6. Kiểm tra Image đã được tạo thành công chưa
       run: docker images
+
+    - name: 7. Quét lỗ hổng Docker Image bằng Trivy
+      uses: aquasecurity/trivy-action@master
+      with:
+        image-ref: 'my-node-app:latest' # Chỉ đích danh Image vừa đúc ở bước 5
+        format: 'table' # Hiển thị kết quả dưới dạng bảng cho dễ nhìn
+        exit-code: '1' # Đánh sập Pipeline nếu phát hiện lỗi
+        ignore-unfixed: true # Bỏ qua các lỗi chưa có bản vá từ nhà phát hành
+        vuln-type: 'os,library' # Quét cả hệ điều hành lẫn thư viện
+        severity: 'CRITICAL,HIGH' # Chỉ báo động với các lỗi Cực kỳ nghiêm trọng và Cao
